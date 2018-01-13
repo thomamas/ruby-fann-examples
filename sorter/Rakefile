@@ -1,0 +1,13 @@
+task default: %w[data_training.json data_testing.json]
+
+file 'data_training.json' => 'makedata.rb' do
+  ruby './makedata.rb 10000 > data_training.json'
+end
+
+file 'data_testing.json' => 'makedata.rb' do
+  ruby './makedata.rb 1000 > data_testing.json'
+end
+
+task :clean do
+  system 'rm *.json'
+end
