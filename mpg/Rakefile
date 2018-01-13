@@ -1,0 +1,5 @@
+task default: %w[auto-mpg.data]
+
+file 'auto-mpg.data' do
+  system 'curl -o auto-mpg.data https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data'
+end
