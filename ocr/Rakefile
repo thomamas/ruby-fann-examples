@@ -1,0 +1,37 @@
+task default: %w[optdigits-cv.json optdigits-tra.json optdigits-wdep.json optdigits-windep.json]
+
+file 'optdigits-cv.json' do
+  ruby 'cook-optdigits.rb optdigits-orig.cv > optdigits-cv.json'
+end
+
+file 'optdigits-tra.json' do
+  ruby 'cook-optdigits.rb optdigits-orig.tra > optdigits-tra.json'
+end
+
+file 'optdigits-wdep.json' do
+  ruby 'cook-optdigits.rb optdigits-orig.wdep > optdigits-wdep.json'
+end
+
+file 'optdigits-windep.json' do
+  ruby 'cook-optdigits.rb optdigits-orig.windep > optdigits-windep.json'
+end
+
+file 'optdigits-orig.cv' do
+  system 'curl https://archive.ics.uci.edu/ml/machine-learning-databases/optdigits/optdigits-orig.cv.Z | uncompress -c > optdigits-orig.cv'
+end
+
+file 'optdigits-orig.tra' do
+  system 'curl https://archive.ics.uci.edu/ml/machine-learning-databases/optdigits/optdigits-orig.tra.Z | uncompress -c > optdigits-orig.tra'
+end
+
+file 'optdigits-orig.wdep' do
+  system 'curl https://archive.ics.uci.edu/ml/machine-learning-databases/optdigits/optdigits-orig.wdep.Z | uncompress -c > optdigits-orig.wdep'
+end
+
+file 'optdigits-orig.windep' do
+  system 'curl https://archive.ics.uci.edu/ml/machine-learning-databases/optdigits/optdigits-orig.windep.Z | uncompress -c > optdigits-orig.windep'
+end
+
+task :clean do
+    system 'rm *.json'
+end

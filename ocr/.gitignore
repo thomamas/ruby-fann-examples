@@ -1,0 +1,4 @@
+*.json
+optdigits-orig.*
+fann-data
+fann-data.*
